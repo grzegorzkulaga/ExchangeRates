@@ -31,7 +31,12 @@ namespace ExchangeRates
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             RatesProcessor ratesProcessor = new RatesProcessor();
-            await ratesProcessor.GetTodaysRates();
+       //     await ratesProcessor.GetTodaysRates();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
