@@ -13,31 +13,31 @@ namespace ExchangeRates
 {
     class RatesProcessor
     {
+        public List<RateModel> todayRates = new List<RateModel>();
         public class DataObject
         {
             public string Name { get; set; }
         }
-        public async Task<List<RateModel>> GetTodaysRates()
+        public async Task<List<RateModel>> GetTodaysRates(string tablename)
         {
-            string url = $"http://api.nbp.pl/api/exchangerates/tables/A/today?format=json";
+     
+            string url = $"http://api.nbp.pl/api/exchangerates/tables/"+ tablename + "/?format=json";
+
+                using (HttpResponseMessage response = APIhelper.ApiClient.GetAsync(url).Result)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                       todayRates =await response.Content.ReadAsAsync<List<RateModel>>();
+                    }
+                    else
+                    {
+                        throw new Exception(response.ReasonPhrase);
+                    }
+
+                }
+
+            return todayRates;
            
-            //HttpResponseMessage response = client.GetAsync(urlParameters).Result;
-            using (HttpResponseMessage response = APIhelper.ApiClient.GetAsync(url).Result)
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    //string json = new WebClient().DownloadString(url);
-                    //var ListOfRates = JsonConvert.DeserializeObject<List<RateModel>>(json);
-                   
-                    var rates = await response.Content.ReadAsAsync<List<RateModel>>();
-                    return rates;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-              
-            }
         }
     }
 }
