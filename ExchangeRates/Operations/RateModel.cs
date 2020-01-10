@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExchangeRates
 { 
+
     public class RateModel
     {   [JsonProperty("table")]
         public string table { get; set; }
@@ -34,5 +35,5 @@ namespace ExchangeRates
         [JsonProperty("Mid")]
         public double Mid { get; set; }
     }
-
+   
 }

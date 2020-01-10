@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ExchangeRates.Forms;
 
 namespace ExchangeRates
 {
@@ -24,19 +25,57 @@ namespace ExchangeRates
         {
             InitializeComponent();
             APIhelper.InitializeClient();
-           
-          
+            TodayRatesView.Visibility = Visibility.Visible;
+            RatesForSpecificDayView.Visibility = Visibility.Hidden;
+            CurrencyConverterView.Visibility = Visibility.Hidden;
+            GoldRatesView.Visibility = Visibility.Hidden;
+            CurrencyDetailsView.Visibility = Visibility.Hidden;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RatesProcessor ratesProcessor = new RatesProcessor();
-       //     await ratesProcessor.GetTodaysRates();
+            TodayRatesView.Visibility = Visibility.Visible;
+            RatesForSpecificDayView.Visibility = Visibility.Hidden;
+            CurrencyConverterView.Visibility = Visibility.Hidden;
+            GoldRatesView.Visibility = Visibility.Hidden;
+            CurrencyDetailsView.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            TodayRatesView.Visibility = Visibility.Hidden;
+            CurrencyConverterView.Visibility = Visibility.Hidden;
+            RatesForSpecificDayView.Visibility = Visibility.Visible;
+            GoldRatesView.Visibility = Visibility.Hidden;
+            CurrencyDetailsView.Visibility = Visibility.Hidden;
+        }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            TodayRatesView.Visibility = Visibility.Hidden;
+            CurrencyConverterView.Visibility = Visibility.Visible;
+            RatesForSpecificDayView.Visibility = Visibility.Hidden;
+            GoldRatesView.Visibility = Visibility.Hidden;
+            CurrencyDetailsView.Visibility = Visibility.Hidden;
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            TodayRatesView.Visibility = Visibility.Hidden;
+            CurrencyConverterView.Visibility = Visibility.Hidden;
+            RatesForSpecificDayView.Visibility = Visibility.Hidden;
+            GoldRatesView.Visibility = Visibility.Visible;
+            CurrencyDetailsView.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            CurrencyDetailsView.Visibility = Visibility.Visible;
+            TodayRatesView.Visibility = Visibility.Hidden;
+            CurrencyConverterView.Visibility = Visibility.Hidden;
+            RatesForSpecificDayView.Visibility = Visibility.Hidden;
+            GoldRatesView.Visibility = Visibility.Hidden;
         }
     }
 

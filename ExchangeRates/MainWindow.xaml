@@ -8,18 +8,20 @@
         mc:Ignorable="d"
         Title="Exchange Rates" Height="784.791" Width="1078.159" Background="#FFE2E2E2">
     <Border BorderBrush="Silver" BorderThickness="2">
-        <Grid Margin="0,0,2,2">
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.8*"/>
             </Grid.ColumnDefinitions>
-            <Grid HorizontalAlignment="Left" Height="750" VerticalAlignment="Top" Width="240">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="124*"/>
-                    <RowDefinition Height="441*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.7*"/>
                 </Grid.RowDefinitions>
-                <Grid HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" >
+                <Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="17*"/>
                         <RowDefinition Height="17*"/>
@@ -33,14 +35,20 @@
                     </Grid.RowDefinitions>
                     <Button Content="Today Rates" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click ="Button_Click" />
                     <Button Content= "Rates for Specific Days" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Click="Button_Click_1"/>
-                    <Button Content="Currency Details" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" />
-                    <Button Content="Gold Price" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" />
+                    <Button Content="Currency Details" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Click="Button_Click_4"/>
+                    <Button Content="Gold Price" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" Click="Button_Click_3" />
+                    <Button Content="Currency Converter" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Stretch" Click="Button_Click_2"/>
 
                 </Grid>
-                <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="logo.png" Stretch="Fill" />
+                <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Source="logo.png" Stretch="Fill" />
 
             </Grid>
-            <Forms:mainView Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Forms:mainView x:Name="TodayRatesView" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+            <Forms:RatesForSpecificDayFormxaml x:Name="RatesForSpecificDayView" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Forms:CurrencyConverter x:Name="CurrencyConverterView" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Forms:goldRates x:Name="GoldRatesView" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+            <Forms:CurrencyDetailsFormxaml x:Name="CurrencyDetailsView" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
         </Grid>
     </Border>
 

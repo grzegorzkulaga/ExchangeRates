@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="ExchangeRates.Forms.CurrencyConverter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:ExchangeRates.Forms"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="500">
+    <Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="amountTextbox" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" PreviewTextInput="AmountTextbox_PreviewTextInput" DataObject.Pasting="TextBoxPasting" TextChanged="AmountTextbox_TextChanged"/>
+                <ComboBox Name="fromCombobox" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Center" GotMouseCapture="FromCombobox_GotMouseCapture" SelectionChanged="FromCombobox_SelectionChanged"/>
+                <ComboBox Name="toCombobox" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Center" SelectionChanged="ToCombobox_SelectionChanged"/>
+                <Button Name="ShowButton" Content="Show" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="4" VerticalContentAlignment="Bottom" VerticalAlignment="Center" Click="Button_Click" />
+                <Label Content="Amount:" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Stretch"/>
+                <Label Content="From:" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Stretch"/>
+                <Label Content="To:" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Stretch"/>
+            </Grid>
+            <Grid HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition  Width="0.6*"/>
+                    <ColumnDefinition  Width="0.2*"/>
+                    
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label x:Name="resultLabel" Content="" FontSize="30" Grid.Column="1" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  VerticalAlignment="Stretch"/>
+
+            </Grid>
+
+
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -79,7 +82,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Forms\mainView.xaml">
+    <Page Include="Forms\CurrencyConverter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\CurrencyDetailsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\goldRates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\RatesForSpecificDayForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\TodayRatesForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,8 +110,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Forms\mainView.xaml.cs">
-      <DependentUpon>mainView.xaml</DependentUpon>
+    <Compile Include="Forms\CurrencyConverter.xaml.cs">
+      <DependentUpon>CurrencyConverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CurrencyDetailsForm.xaml.cs">
+      <DependentUpon>CurrencyDetailsForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\goldRates.xaml.cs">
+      <DependentUpon>goldRates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RatesForSpecificDayForm.xaml.cs">
+      <DependentUpon>RatesForSpecificDayForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TodayRatesForm.xaml.cs">
+      <DependentUpon>TodayRatesForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -101,8 +132,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Operations\APIhelper.cs" />
+    <Compile Include="Operations\currencyDetailsModel.cs" />
+    <Compile Include="Operations\CurrencyConverterOperations.cs" />
+    <Compile Include="Operations\CurrencyDetalisOperations.cs" />
+    <Compile Include="Operations\GoldRateModel.cs" />
+    <Compile Include="Operations\GoldRatesOperations.cs" />
     <Compile Include="Operations\RateModel.cs" />
-    <Compile Include="Operations\RatesProcessor.cs" />
+    <Compile Include="Operations\SpecificDaysOperations.cs" />
+    <Compile Include="Operations\TodayRatesProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -129,7 +166,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.png" />
   </ItemGroup>

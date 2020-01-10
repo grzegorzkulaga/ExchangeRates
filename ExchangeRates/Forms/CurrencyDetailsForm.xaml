@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="ExchangeRates.Forms.CurrencyDetailsFormxaml"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExchangeRates.Forms"
+             mc:Ignorable="d" 
+              d:DesignHeight="450" d:DesignWidth="500">
+    <Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.65*"/>
+                <RowDefinition Height="0.05*"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.02*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.15*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Last 10 rates for:" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox Name="currenciesCombobox" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" GotMouseCapture="ComboBox_GotMouseCapture" />
+                <Button Content="Show" Grid.Column="4" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" Click="Button_Click"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.10*"/>
+                    <ColumnDefinition Width="0.80*"/>
+                    <ColumnDefinition Width="0.10*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Name="currencyDetailsGrid" IsReadOnly="True" HorizontalAlignment="Stretch" Grid.Column="1" VerticalAlignment="Stretch"/>
+            </Grid>
+           
+        </Grid>
+
+    </Grid>
+</UserControl>
