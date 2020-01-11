@@ -25,16 +25,30 @@ namespace ExchangeRates.Forms
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        ///  event after clik submit button
+        /// </summary>
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             GoldRatesOperations goldRatesProcessor = new GoldRatesOperations();
             goldRatesList.Clear();
-            goldRatesList.Add(await goldRatesProcessor.GetGoldRates());
+            try
+            {
+                goldRatesList.Add(await goldRatesProcessor.GetGoldRates());
+            }
+            catch (Exception ec)
+            {
+
+                MessageBox.Show(ec.Message);
+            }
+           
             childGoldRatesList = goldRatesList.SelectMany(x => x).ToList();
             fillDataGrid();
 
         }
+        /// <summary>
+        /// filling datagrid with gold prices.
+        /// </summary>
         private void fillDataGrid()
         {
             goldRatesGrid.ItemsSource = childGoldRatesList;
