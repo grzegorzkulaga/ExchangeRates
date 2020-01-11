@@ -29,28 +29,48 @@ namespace ExchangeRates.Forms
         public CurrencyDetailsFormxaml()
         {
             InitializeComponent();
+            buttonShow.IsEnabled = false;
+            currencyDetailsGrid.ItemsSource = null;
+            currenciesCombobox.SelectedItem = null;
         }
 
         private void ComboBox_GotMouseCapture(object sender, MouseEventArgs e)
         {
             loadList();
         }
+
+        /// <summary>
+        /// filling list with Today rates. List will be useful as combobox item source.
+        /// </summary>
         public async void loadList()
         {
             if (currenciesCombobox.ItemsSource == null)
             {
                 RatesProcessor ratesProcessor = new RatesProcessor();
                 RatesList.Clear();
-                RatesList.Add(await ratesProcessor.GetTodaysRates("A"));
-                RatesList.Add(await ratesProcessor.GetTodaysRates("B"));
-                RatesList.Add(await ratesProcessor.GetTodaysRates("C"));
+                List<string> tablenames = new List<string>(new string[] { "A", "B", "C" });
+                foreach (var item in tablenames)
+                {
+                    try
+                    {
+                        RatesList.Add(await ratesProcessor.GetTodaysRates(item));
+                    }
+                    catch (Exception ec)
+                    {
+
+                        MessageBox.Show(ec.Message);
+                    }
+                   
+                }
                 childRatesList = RatesList.SelectMany(x => x).ToList();
                 endList = childRatesList.SelectMany(x => x.Rates).ToList();
                 currenciesCombobox.ItemsSource = endList.Select(x => x.Code + " - " + x.Currency).ToList();
             }
 
         }
-
+        /// <summary>
+        ///  event after clik submit button
+        /// </summary>
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             string currencyCode = currenciesCombobox.SelectedItem.ToString();
@@ -61,24 +81,46 @@ namespace ExchangeRates.Forms
            
             foreach (var item in childRatesList)
             {
-                if (item.Rates.Find(x => x.Code == currencyCode) != null) ;
+                if (item.Rates.Find(x => x.Code == currencyCode) != null)
                 {
                     string tableOfCurrency = item.table;
                     CurrencyDetalisOperations currencyDetalis = new CurrencyDetalisOperations();
-                    var result =await currencyDetalis.getCurrencyDetails(tableOfCurrency, currencyCode);
-                    currencyDetailsList = result.rates.OrderBy(x=>x.effectiveDate).ToList();    
+                    try
+                    {
+                        var result = await currencyDetalis.getCurrencyDetails(tableOfCurrency, currencyCode);
+                        currencyDetailsList = result.rates.OrderBy(x => x.effectiveDate).ToList();
+                    }
+                    catch (Exception ec)
+                    {
+
+                        MessageBox.Show(ec.Message);
+                    }
                     filldataGrid();
                     return;
                 }
             }
         }
-
+        /// <summary>
+        /// filling datagrid with given rates list
+        /// </summary>
         private void filldataGrid()
         {
             currencyDetailsGrid.ItemsSource = currencyDetailsList;
             foreach (var item in currencyDetailsGrid.Columns.ToList())
             {
                 item.Width = new DataGridLength(33, DataGridLengthUnitType.Star);
+            }
+        }
+
+        private void CurrenciesCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (currenciesCombobox.SelectedItem !=null)
+            {
+                buttonShow.IsEnabled = true;
+            }
+            else
+            {
+                buttonShow.IsEnabled = false;
             }
         }
     }

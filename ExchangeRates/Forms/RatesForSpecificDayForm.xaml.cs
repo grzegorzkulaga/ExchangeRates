@@ -42,6 +42,7 @@ namespace ExchangeRates.Forms
 
         private void SpecificDayRadioB_Checked(object sender, RoutedEventArgs e)
         {
+            specificDayOrDateRange = SpecificDayOrDateRange.SpecificDay;
             ShowRatesButton.IsEnabled = false;
             if (SpecificDayRadioB.IsChecked!=null)
             {
@@ -74,10 +75,11 @@ namespace ExchangeRates.Forms
 
         private void SpecificDayPicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            specificDayOrDateRange = SpecificDayOrDateRange.SpecificDay;
             DateValidator();
         }
-
+        /// <summary>
+        /// validating if dates are correct
+        /// </summary>
         private void DateValidator()
         {
             if (specificDayOrDateRange == SpecificDayOrDateRange.SpecificDay)
@@ -129,56 +131,48 @@ namespace ExchangeRates.Forms
         {
             DateValidator();
         }
-
+        /// <summary>
+        ///  event after clik submit button
+        /// </summary>
         private async void ShowRatesButton_Click(object sender, RoutedEventArgs e)
         {
             SpecificDaysOperations specificDaysOperations = new SpecificDaysOperations();
             SpecificDaysRatesList.Clear();
+            List<string> tablenames = new List<string>(new string[] { "A", "B", "C" });
             if (specificDayOrDateRange == SpecificDayOrDateRange.SpecificDay)
             {
                 string specificDay = ((DateTime)SpecificDayPicker.SelectedDate).ToString("yyyy-MM-dd");
-                string tableName = "A";
-                #region tryCatch
-                try
+                
+              
+                foreach (var tableName in tablenames)
                 {
-                    tableName = "A";
-                    SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates(tableName, specificDay));
-                   
+                    try
+                    {
+                        SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates(tableName, specificDay));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + " dla tabeli" + " " + tableName);
+                    }
                 }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message + " dla tabeli" + " " + tableName);
-                }
-                try
-                {
-                    tableName = "B";
-                    SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates(tableName, specificDay));
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message + " dla tabeli" + " " + tableName);
-                }
-                try
-                {
-                    tableName = "C";
-                    SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates(tableName, specificDay));
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message + " dla tabeli" + " " + tableName);
-                }
-                #endregion
+                
+              
             }
             else
             {
                 string startDate = ((DateTime)DateStartPicker.SelectedDate).ToString("yyyy-MM-dd");
                 string endDate = ((DateTime)DateEndPicker.SelectedDate).ToString("yyyy-MM-dd");
-                SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates("A", startDate, endDate));
-                SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates("B", startDate, endDate));
-                SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates("C", startDate, endDate));
+                foreach (var tablename in tablenames)
+                {
+                    try
+                    {
+                        SpecificDaysRatesList.Add(await specificDaysOperations.GetSpecificDayRates(tablename, startDate, endDate));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + " dla tabeli" + " " + tablename);
+                    }
+                }
             }
 
 

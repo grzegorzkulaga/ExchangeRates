@@ -28,8 +28,8 @@
                     <ColumnDefinition Width="0.15*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Last 10 rates for:" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox Name="currenciesCombobox" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" GotMouseCapture="ComboBox_GotMouseCapture" />
-                <Button Content="Show" Grid.Column="4" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" Click="Button_Click"/>
+                <ComboBox Name="currenciesCombobox" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" GotMouseCapture="ComboBox_GotMouseCapture" SelectionChanged="CurrenciesCombobox_SelectionChanged" />
+                <Button Name="buttonShow" Content="Show" Grid.Column="4" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center" Click="Button_Click"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
                     <ColumnDefinition Width="0.80*"/>
                     <ColumnDefinition Width="0.10*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Name="currencyDetailsGrid" IsReadOnly="True" HorizontalAlignment="Stretch" Grid.Column="1" VerticalAlignment="Stretch"/>
+                <DataGrid x:Name="currencyDetailsGrid" IsReadOnly="True" HorizontalAlignment="Stretch" Grid.Column="1" VerticalAlignment="Stretch"/>
             </Grid>
            
         </Grid>

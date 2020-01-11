@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("logo.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute(".gitignore")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("api/.gitignore")]
 
 
