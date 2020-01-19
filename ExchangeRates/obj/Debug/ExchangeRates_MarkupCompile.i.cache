@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-G:\new\ExchangeRates\ExchangeRates\ExchangeRates\obj\Debug\
+E:\ExchangeRates\ExchangeRates\obj\Debug\
 ExchangeRates
 none
 false
 DEBUG;TRACE
-G:\new\ExchangeRates\ExchangeRates\ExchangeRates\App.xaml
+E:\ExchangeRates\ExchangeRates\App.xaml
 61268200346
-
-23-610511992
-1292141017587
+2-1853737641
+14-1599654958
+131-1732067532
 Forms\CurrencyConverter.xaml;Forms\CurrencyDetailsForm.xaml;Forms\goldRates.xaml;Forms\RatesForSpecificDayForm.xaml;Forms\TodayRatesForm.xaml;MainWindow.xaml;
 
 False

@@ -26,6 +26,7 @@ namespace ExchangeRates
             InitializeComponent();
             APIhelper.InitializeClient();
             TodayRatesView.Visibility = Visibility.Visible;
+            TodayRatesView.todayRatesDataGrid.ItemsSource = null;
             RatesForSpecificDayView.Visibility = Visibility.Hidden;
             CurrencyConverterView.Visibility = Visibility.Hidden;
             GoldRatesView.Visibility = Visibility.Hidden;
@@ -35,6 +36,7 @@ namespace ExchangeRates
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TodayRatesView.Visibility = Visibility.Visible;
+            TodayRatesView.todayRatesDataGrid.ItemsSource = null;
             RatesForSpecificDayView.Visibility = Visibility.Hidden;
             CurrencyConverterView.Visibility = Visibility.Hidden;
             GoldRatesView.Visibility = Visibility.Hidden;
@@ -46,6 +48,12 @@ namespace ExchangeRates
             TodayRatesView.Visibility = Visibility.Hidden;
             CurrencyConverterView.Visibility = Visibility.Hidden;
             RatesForSpecificDayView.Visibility = Visibility.Visible;
+            RatesForSpecificDayView.SpecificDayPicker.SelectedDate = null;
+            RatesForSpecificDayView.SpecificDayRadioB.IsChecked = false;
+            RatesForSpecificDayView.DateRangeRadioB.IsChecked = false;
+            RatesForSpecificDayView.DateStartPicker.SelectedDate = null;
+            RatesForSpecificDayView.DateEndPicker.SelectedDate = null;
+            RatesForSpecificDayView.SpecificDaysDataGrid.ItemsSource = null;
             GoldRatesView.Visibility = Visibility.Hidden;
             CurrencyDetailsView.Visibility = Visibility.Hidden;
         }
@@ -54,6 +62,10 @@ namespace ExchangeRates
         {
             TodayRatesView.Visibility = Visibility.Hidden;
             CurrencyConverterView.Visibility = Visibility.Visible;
+            CurrencyConverterView.amountTextbox.Text = string.Empty;
+            CurrencyConverterView.fromCombobox.SelectedItem = null;
+            CurrencyConverterView.toCombobox.SelectedItem = null;
+            CurrencyConverterView.resultLabel.Content = string.Empty;
             RatesForSpecificDayView.Visibility = Visibility.Hidden;
             GoldRatesView.Visibility = Visibility.Hidden;
             CurrencyDetailsView.Visibility = Visibility.Hidden;
@@ -66,6 +78,7 @@ namespace ExchangeRates
             CurrencyConverterView.Visibility = Visibility.Hidden;
             RatesForSpecificDayView.Visibility = Visibility.Hidden;
             GoldRatesView.Visibility = Visibility.Visible;
+            GoldRatesView.goldRatesGrid.ItemsSource = null;
             CurrencyDetailsView.Visibility = Visibility.Hidden;
         }
 
@@ -76,6 +89,10 @@ namespace ExchangeRates
             CurrencyConverterView.Visibility = Visibility.Hidden;
             RatesForSpecificDayView.Visibility = Visibility.Hidden;
             GoldRatesView.Visibility = Visibility.Hidden;
+            CurrencyDetailsView.currenciesCombobox.SelectedItem = null;
+            CurrencyDetailsView.currencyDetailsGrid.ItemsSource = null;
+
+
         }
     }
 

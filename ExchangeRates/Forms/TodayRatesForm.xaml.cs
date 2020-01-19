@@ -30,11 +30,23 @@ namespace ExchangeRates.Forms
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            List<string> tablenames = new List<string>(new string[] { "A", "B", "C" });
             RatesProcessor ratesProcessor = new RatesProcessor();
             todayRatesList.Clear();
-            todayRatesList.Add(await ratesProcessor.GetTodaysRates("A"));
-            todayRatesList.Add(await ratesProcessor.GetTodaysRates("B"));
-            todayRatesList.Add(await ratesProcessor.GetTodaysRates("C"));
+            foreach (var item in tablenames)
+            {
+                try
+                {
+                    todayRatesList.Add(await ratesProcessor.GetTodaysRates(item));
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            
             childTodayRatesList = todayRatesList.SelectMany(x => x).ToList();
             endList = childTodayRatesList.SelectMany(x => x.Rates).ToList();
             fillDataGrid();      
