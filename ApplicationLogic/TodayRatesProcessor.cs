@@ -31,7 +31,7 @@ namespace ExchangeRates
                     if (response.IsSuccessStatusCode)
                     {
                        todayRates =await response.Content.ReadAsAsync<List<RateModel>>();
-                }
+                    }
                     else
                     {
                         throw new Exception(response.ReasonPhrase);
