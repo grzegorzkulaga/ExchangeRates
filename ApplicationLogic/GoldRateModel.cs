@@ -12,7 +12,7 @@ namespace ExchangeRates
    public class GoldRateModel
     {
         [JsonProperty("data")]
-        public string data { get; set; }
+        public string data { get;  set; }
 
         [JsonProperty("cena")]
         public double cena { get; set; }

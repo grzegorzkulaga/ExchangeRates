@@ -33,6 +33,7 @@ namespace ExchangeRates.Forms
             List<string> tablenames = new List<string>(new string[] { "A", "B", "C" });
             RatesProcessor ratesProcessor = new RatesProcessor();
             todayRatesList.Clear();
+
             foreach (var item in tablenames)
             {
                 try
