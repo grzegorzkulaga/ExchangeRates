@@ -26,8 +26,7 @@ namespace ExchangeRates.Forms
         public enum SpecificDayOrDateRange
         {
             SpecificDay,
-            DateRange 
-
+            DateRange
         }
         public SpecificDayOrDateRange specificDayOrDateRange;
         public RatesForSpecificDayFormxaml()
@@ -56,7 +55,8 @@ namespace ExchangeRates.Forms
                 }
             }
         }
-
+     
+        
         private void DateRangeRadioB_Checked(object sender, RoutedEventArgs e)
         {
             specificDayOrDateRange = SpecificDayOrDateRange.DateRange;
@@ -89,6 +89,10 @@ namespace ExchangeRates.Forms
                     if (SpecificDayPicker.SelectedDate <= System.DateTime.Today)
                     {
                         ShowRatesButton.IsEnabled = true;
+                    }
+                    else
+                    {
+                        ShowRatesButton.IsEnabled = false;
                     }
                   
                 }
